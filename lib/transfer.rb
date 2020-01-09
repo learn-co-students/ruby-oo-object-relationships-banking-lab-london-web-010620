@@ -36,34 +36,8 @@
           end
         end
 
-  #  if @status == "complete"
-  #      return "Transaction was already excuted"
-  #  elsif @sender.close_account == 'closed'
-  #      @status = "rejected"
-  #      return "Transaction rejected. Please check your account balance."
-  #     else
-  #       @sender.deposit(@amount * -1) 
-  #       @receiver.deposit(@amount)
-  #       @status = "complete"
-  #     end
-  #  end
+
   
-  #   def execute_transaction
-  #  if @sender.balance > @amount && @status == "pending"
-  #   @receiver.balance += @amount
-  #   @sender.balance -= @amount
-  #   @status = "complete"
-  #  elsif @sender.balance < @amount || @sender.close_account == 'closed'
-  #   @status = "rejected"
-  #   return "Transaction rejected. Please check your account balance."
-  #     else
-  #     return "Transaction was already excuted"
-  #  end
-  # end
-  
-
-
-
   end
   
 
