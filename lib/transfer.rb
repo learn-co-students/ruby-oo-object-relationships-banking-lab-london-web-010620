@@ -1,3 +1,69 @@
-class Transfer
-  # your code here
-end
+  class Transfer
+    attr_accessor :sender, :receiver, :amount
+    attr_reader :status
+  
+  def initialize(sender, receiver, amount)
+    @sender = sender
+    @receiver = receiver
+    @status = 'pending'
+    @amount = amount
+  end
+  
+  def valid?
+  if @sender.valid? && @receiver.valid?
+    return true
+  else
+    return false
+  end
+  end
+  
+    def execute_transaction
+       if @sender.balance < @amount || valid? == false
+        @status = "rejected"
+         return "Transaction rejected. Please check your account balance."
+         elsif @sender.balance >= @amount && @status == "pending"
+            @sender.deposit(@amount * -1) 
+            @receiver.deposit(@amount)
+            @status = "complete"
+          end
+        end
+
+        def reverse_transfer
+          if @status == "complete"
+            @sender.deposit( @amount ) 
+            @receiver.deposit( @amount * -1)
+            @status = "reversed"
+          end
+        end
+
+  #  if @status == "complete"
+  #      return "Transaction was already excuted"
+  #  elsif @sender.close_account == 'closed'
+  #      @status = "rejected"
+  #      return "Transaction rejected. Please check your account balance."
+  #     else
+  #       @sender.deposit(@amount * -1) 
+  #       @receiver.deposit(@amount)
+  #       @status = "complete"
+  #     end
+  #  end
+  
+  #   def execute_transaction
+  #  if @sender.balance > @amount && @status == "pending"
+  #   @receiver.balance += @amount
+  #   @sender.balance -= @amount
+  #   @status = "complete"
+  #  elsif @sender.balance < @amount || @sender.close_account == 'closed'
+  #   @status = "rejected"
+  #   return "Transaction rejected. Please check your account balance."
+  #     else
+  #     return "Transaction was already excuted"
+  #  end
+  # end
+  
+
+
+
+  end
+  
+
